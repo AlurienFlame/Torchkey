@@ -1,2 +1,3 @@
-# torchkey
- A Minecraft mod that adds a hotkey to places a torch from your hotbar.
+# Torchkey
+
+Adds a hotkey to place a torch from your hotbar.
