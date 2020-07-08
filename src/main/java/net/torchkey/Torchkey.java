@@ -38,6 +38,7 @@ public class Torchkey implements ModInitializer {
         PlayerInventory inv = client.player.inventory;
 
         // TODO: Find a more reliable/extensible way of detecting item type
+        // FIXME: Occasional crash, probably caused by crosshairTarget having type EntityHit instead of BlockHit
 
         // Check main hand for torch
         if (inv.getMainHandStack().getItem().toString() == "torch") {
