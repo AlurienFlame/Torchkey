@@ -11,6 +11,7 @@ import net.minecraft.client.util.InputUtil;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
+import net.minecraft.util.hit.HitResult;
 
 public class Torchkey implements ModInitializer {
 
@@ -34,18 +35,22 @@ public class Torchkey implements ModInitializer {
         });
     }
 
+    // TODO: Find a more reliable/extensible way of detecting item type
     private void placeTorch(MinecraftClient client) {
         PlayerInventory inv = client.player.inventory;
 
-        // TODO: Find a more reliable/extensible way of detecting item type
-        // FIXME: Occasional crash, probably caused by crosshairTarget having type EntityHit instead of BlockHit
+        // Find target
+        HitResult target = client.crosshairTarget;
+        if (target.getType() != HitResult.Type.BLOCK) {
+            return;
+        }
+        BlockHitResult targetBlock = (BlockHitResult) target;
 
         // Check main hand for torch
         if (inv.getMainHandStack().getItem().toString() == "torch") {
 
             // Place the torch
-            client.interactionManager.interactBlock(client.player, client.world, Hand.MAIN_HAND,
-                    (BlockHitResult) client.crosshairTarget);
+            client.interactionManager.interactBlock(client.player, client.world, Hand.MAIN_HAND, targetBlock);
 
             return;
         }
@@ -54,8 +59,7 @@ public class Torchkey implements ModInitializer {
         if (inv.offHand.get(0).getItem().toString() == "torch") {
 
             // Place the torch
-            client.interactionManager.interactBlock(client.player, client.world, Hand.OFF_HAND,
-                    (BlockHitResult) client.crosshairTarget);
+            client.interactionManager.interactBlock(client.player, client.world, Hand.OFF_HAND, targetBlock);
 
             return;
         }
@@ -71,8 +75,7 @@ public class Torchkey implements ModInitializer {
                 inv.selectedSlot = slot;
 
                 // Place the torch
-                client.interactionManager.interactBlock(client.player, client.world, Hand.MAIN_HAND,
-                        (BlockHitResult) client.crosshairTarget);
+                client.interactionManager.interactBlock(client.player, client.world, Hand.MAIN_HAND, targetBlock);
 
                 // De-select the torch
                 inv.selectedSlot = oldSlot;
