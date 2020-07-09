@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "torchkey",
-  "version": "1.0.0",
+  "version": "1.0.1",
 
   "name": "Torchkey",
   "description": "Adds a hotkey to place a torch from your hotbar.",
