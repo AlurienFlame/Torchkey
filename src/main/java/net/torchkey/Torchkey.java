@@ -1,5 +1,7 @@
 package net.torchkey;
 
+import java.util.Arrays;
+
 import org.lwjgl.glfw.GLFW;
 
 import net.fabricmc.api.ModInitializer;
@@ -16,6 +18,7 @@ import net.minecraft.util.hit.HitResult;
 public class Torchkey implements ModInitializer {
 
     private static KeyBinding keyPlaceTorch;
+    private static String[] validTorches = { "torch", "redstone_torch", "stone_torch" };
 
     @Override
     public void onInitialize() {
@@ -47,7 +50,7 @@ public class Torchkey implements ModInitializer {
         BlockHitResult targetBlock = (BlockHitResult) target;
 
         // Check main hand for torch
-        if (inv.getMainHandStack().getItem().toString() == "torch") {
+        if (Arrays.asList(validTorches).contains(inv.getMainHandStack().getItem().toString())) {
 
             // Place the torch
             client.interactionManager.interactBlock(client.player, client.world, Hand.MAIN_HAND, targetBlock);
@@ -56,7 +59,7 @@ public class Torchkey implements ModInitializer {
         }
 
         // Check off hand for torch
-        if (inv.offHand.get(0).getItem().toString() == "torch") {
+        if (Arrays.asList(validTorches).contains(inv.offHand.get(0).getItem().toString())) {
 
             // Place the torch
             client.interactionManager.interactBlock(client.player, client.world, Hand.OFF_HAND, targetBlock);
@@ -69,7 +72,7 @@ public class Torchkey implements ModInitializer {
         for (int slot = 0; slot < 9; slot++) {
 
             // Check if item in this slot is a torch
-            if (inv.getStack(slot).getItem().toString() == "torch") {
+            if (Arrays.asList(validTorches).contains(inv.getStack(slot).getItem().toString())) {
 
                 // Select the torch
                 inv.selectedSlot = slot;
