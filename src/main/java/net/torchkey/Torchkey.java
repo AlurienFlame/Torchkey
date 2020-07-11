@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import org.lwjgl.glfw.GLFW;
 
+import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.event.client.ClientTickCallback;
@@ -15,13 +16,13 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.HitResult;
 
-public class Torchkey implements ModInitializer {
+public class Torchkey implements ClientModInitializer {
 
     private static KeyBinding keyPlaceTorch;
     private static String[] validTorches = { "torch", "redstone_torch", "stone_torch" };
 
     @Override
-    public void onInitialize() {
+    public void onInitializeClient() {
 
         // Define the keybinding object
         keyPlaceTorch = new KeyBinding("key.torchkey.placetorch", InputUtil.Type.MOUSE, GLFW.GLFW_MOUSE_BUTTON_MIDDLE,
