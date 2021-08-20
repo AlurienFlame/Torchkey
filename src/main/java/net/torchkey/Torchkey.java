@@ -5,11 +5,10 @@ import java.util.Arrays;
 import org.lwjgl.glfw.GLFW;
 
 import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.event.client.ClientTickCallback;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.options.KeyBinding;
+import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.Hand;
@@ -19,6 +18,7 @@ import net.minecraft.util.hit.HitResult;
 public class Torchkey implements ClientModInitializer {
 
     private static KeyBinding keyPlaceTorch;
+	// TODO: Add support for Druidcraft firey torches
     private static String[] validTorches = { "torch", "redstone_torch", "stone_torch" };
 
     @Override
@@ -41,7 +41,7 @@ public class Torchkey implements ClientModInitializer {
 
     // TODO: Find a more reliable/extensible way of detecting item type
     private void placeTorch(MinecraftClient client) {
-        PlayerInventory inv = client.player.inventory;
+        PlayerInventory inv = client.player.getInventory();
 
         // Find target
         HitResult target = client.crosshairTarget;

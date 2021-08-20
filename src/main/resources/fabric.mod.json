@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "torchkey",
-  "version": "1.0.3",
+  "version": "1.0.4",
 
   "name": "Torchkey",
   "description": "Adds a hotkey to place a torch from your hotbar.",
@@ -9,7 +9,7 @@
     "AlurienFlame"
   ],
   "contact": {
-    "homepage": "https://www.curseforge.com/minecraft/mc-mods/torchkey",
+    "homepage": "https://modrinth.com/mod/torchkey",
     "sources": "https://github.com/AlurienFlame/torchkey"
   },
 
@@ -26,11 +26,11 @@
   ],
 
   "depends": {
-    "fabricloader": ">=0.7.4",
+    "fabricloader": ">=0.11.3",
     "fabric": "*",
-    "minecraft": "1.16.x"
+    "minecraft": "1.17.x",
+    "java": ">=16"
   },
   "suggests": {
-    "flamingo": "*"
   }
 }
