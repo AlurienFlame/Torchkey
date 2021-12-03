@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "torchkey",
-  "version": "1.0.4",
+  "version": "1.0.5",
 
   "name": "Torchkey",
   "description": "Adds a hotkey to place a torch from your hotbar.",
@@ -28,8 +28,8 @@
   "depends": {
     "fabricloader": ">=0.11.3",
     "fabric": "*",
-    "minecraft": "1.17.x",
-    "java": ">=16"
+    "minecraft": "1.18.x",
+    "java": ">=17"
   },
   "suggests": {
   }
