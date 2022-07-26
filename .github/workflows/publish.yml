@@ -1,0 +1,19 @@
+name: Publish
+on: release
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+    - name: publish
+      uses: Kir-Antipov/mc-publish@v3.1
+      with:
+        # modrinth-id: BM97J8u2
+        # modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+        # curseforge-id: 392380
+        # curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
+        github-token: ${{ secrets.GH_TOKEN }}
+        
+        # Determines the way automatic game-versions resolvement works
+        version-resolver: all
+        
+        java: 17
