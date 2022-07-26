@@ -18,7 +18,7 @@ import net.minecraft.util.hit.HitResult;
 public class Torchkey implements ClientModInitializer {
 
 	private static KeyBinding keyPlaceTorch;
-	private static String[] validTorches = { "torch", "redstone_torch", "stone_torch" };
+	private static String[] validTorches = { "torch", "redstone_torch", "stone_torch", "soul_torch" };
 
 	@Override
     public void onInitializeClient() {
