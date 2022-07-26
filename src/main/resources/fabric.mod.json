@@ -6,7 +6,8 @@
   "name": "Torchkey",
   "description": "Adds a hotkey to place a torch from your hotbar.",
   "authors": [
-    "AlurienFlame"
+    "AlurienFlame",
+    "rburketaylor"
   ],
   "contact": {
     "homepage": "https://modrinth.com/mod/torchkey",
