@@ -53,7 +53,7 @@ public class Torchkey implements ClientModInitializer {
 		if (Arrays.asList(validTorches).contains(inv.getMainHandStack().getItem().toString())) {
 
 			// Place the torch
-			client.interactionManager.interactBlock(client.player, client.world, Hand.MAIN_HAND, targetBlock);
+			client.interactionManager.interactBlock(client.player, Hand.MAIN_HAND, targetBlock);
 
 			return;
 		}
@@ -62,7 +62,7 @@ public class Torchkey implements ClientModInitializer {
 		if (Arrays.asList(validTorches).contains(inv.offHand.get(0).getItem().toString())) {
 
 			// Place the torch
-			client.interactionManager.interactBlock(client.player, client.world, Hand.OFF_HAND, targetBlock);
+			client.interactionManager.interactBlock(client.player, Hand.OFF_HAND, targetBlock);
 
 			return;
 		}
@@ -78,7 +78,7 @@ public class Torchkey implements ClientModInitializer {
 				inv.selectedSlot = slot;
 
 				// Place the torch
-				client.interactionManager.interactBlock(client.player, client.world, Hand.MAIN_HAND, targetBlock);
+				client.interactionManager.interactBlock(client.player, Hand.MAIN_HAND, targetBlock);
 
 				// De-select the torch
 				inv.selectedSlot = oldSlot;
