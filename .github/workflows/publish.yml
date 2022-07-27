@@ -7,10 +7,10 @@ jobs:
     - name: publish
       uses: Kir-Antipov/mc-publish@v3.1
       with:
-        # modrinth-id: BM97J8u2
-        # modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
-        # curseforge-id: 392380
-        # curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
+        modrinth-id: BM97J8u2
+        modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+        curseforge-id: 392380
+        curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
         github-token: ${{ secrets.GH_TOKEN }}
         
         # Determines the way automatic game-versions resolvement works
