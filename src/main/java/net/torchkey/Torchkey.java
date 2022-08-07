@@ -1,6 +1,6 @@
 package net.torchkey;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 
 import org.lwjgl.glfw.GLFW;
 
@@ -18,25 +18,25 @@ import net.minecraft.util.hit.HitResult;
 public class Torchkey implements ClientModInitializer {
 
 	private static KeyBinding keyPlaceTorch;
-	private static String[] validTorches = { "torch", "redstone_torch", "stone_torch", "soul_torch" };
+	TorchkeyConfig torchkeyConfig = new TorchkeyConfig();
 
 	@Override
-    public void onInitializeClient() {
+	public void onInitializeClient() {
 
 		// Initialize the keybinding
-        keyPlaceTorch = new KeyBinding("key.torchkey.placetorch", InputUtil.Type.MOUSE, GLFW.GLFW_MOUSE_BUTTON_MIDDLE,
-                "category.torchkey.Torchkey");
+		keyPlaceTorch = new KeyBinding("key.torchkey.placetorch", InputUtil.Type.MOUSE, GLFW.GLFW_MOUSE_BUTTON_MIDDLE,
+				"category.torchkey.Torchkey");
 
-        // Register the keybinding
-        KeyBindingHelper.registerKeyBinding(keyPlaceTorch);
+		// Register the keybinding
+		KeyBindingHelper.registerKeyBinding(keyPlaceTorch);
 
-        // Give the keybinding functionality by listening for the client tick event
+		// Give the keybinding functionality by listening for the client tick event
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
 			while (keyPlaceTorch.wasPressed()) {
-                placeTorch(client);
-            }
+				placeTorch(client);
+			}
 		});
-    }
+	}
 
 	// TODO: Find a more reliable/extensible way of detecting item type
 	private void placeTorch(MinecraftClient client) {
@@ -50,7 +50,7 @@ public class Torchkey implements ClientModInitializer {
 		BlockHitResult targetBlock = (BlockHitResult) target;
 
 		// Check main hand for torch
-		if (Arrays.asList(validTorches).contains(inv.getMainHandStack().getItem().toString())) {
+		if (torchkeyConfig.getOrDefault("validTorches", new ArrayList<String>()).contains(inv.getMainHandStack().getItem().toString())) {
 
 			// Place the torch
 			client.interactionManager.interactBlock(client.player, Hand.MAIN_HAND, targetBlock);
@@ -59,7 +59,7 @@ public class Torchkey implements ClientModInitializer {
 		}
 
 		// Check off hand for torch
-		if (Arrays.asList(validTorches).contains(inv.offHand.get(0).getItem().toString())) {
+		if (torchkeyConfig.getOrDefault("validTorches", new ArrayList<String>()).contains(inv.offHand.get(0).getItem().toString())) {
 
 			// Place the torch
 			client.interactionManager.interactBlock(client.player, Hand.OFF_HAND, targetBlock);
@@ -72,7 +72,7 @@ public class Torchkey implements ClientModInitializer {
 		for (int slot = 0; slot < 9; slot++) {
 
 			// Check if item in this slot is a torch
-			if (Arrays.asList(validTorches).contains(inv.getStack(slot).getItem().toString())) {
+			if (torchkeyConfig.getOrDefault("validTorches", new ArrayList<String>()).contains(inv.getStack(slot).getItem().toString())) {
 
 				// Select the torch
 				inv.selectedSlot = slot;
