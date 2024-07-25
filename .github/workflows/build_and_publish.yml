@@ -31,7 +31,6 @@ jobs:
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
           curseforge-id: 392380
           curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
-          github-token: ${{ secrets.GH_TOKEN }}
 
           # Determines the way automatic game-versions resolvement works
           game-version-filter: min-major | min-minor | releases
