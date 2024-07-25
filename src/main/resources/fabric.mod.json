@@ -33,5 +33,10 @@
     "java": ">=17"
   },
   "suggests": {
+  },
+  "custom": {
+    "mc-publish": {
+        "loaders": ["fabric", "quilt"]
+    }
   }
 }
