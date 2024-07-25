@@ -21,7 +21,7 @@ public class TorchkeyConfig {
   static Path configDir = FabricLoader.getInstance().getConfigDir();
   static Path configPath = configDir.resolve(configFilename);
   static File configFile = configPath.toFile();
-  static String defaultConfig = "{\"validTorches\": [\"torch\", \"redstone_torch\", \"stone_torch\", \"soul_torch\"]}";
+  static String defaultConfig = "{\"validTorches\": [\"minecraft:torch\", \"minecraft:redstone_torch\", \"minecraft:stone_torch\", \"minecraft:soul_torch\"]}";
 
   public TorchkeyConfig() {
     if (!Files.exists(configPath)) {

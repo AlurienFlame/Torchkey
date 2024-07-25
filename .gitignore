@@ -1,5 +1,6 @@
-# gradle
+remappedSrc/
 
+# gradle
 .gradle/
 build/
 out/

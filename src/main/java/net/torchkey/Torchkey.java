@@ -40,8 +40,8 @@ public class Torchkey implements ClientModInitializer {
 
 	// TODO: Find a more reliable/extensible way of detecting item type
 	private void placeTorch(MinecraftClient client) {
-		PlayerInventory inv = client.player.getInventory();
-
+        PlayerInventory inv = client.player.getInventory();
+        
 		// Find target
 		HitResult target = client.crosshairTarget;
 		if (target.getType() != HitResult.Type.BLOCK) {
